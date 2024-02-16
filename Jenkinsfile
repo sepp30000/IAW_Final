@@ -9,6 +9,7 @@ pipeline {
         stage('Paso 1: Clonar') {
             steps {
                 echo 'Clonando repositorio...'
+                sh 'curl -X POST -H "Content-Type: application/json" -d "{\"chat_id\": \"881875692\", \"text\": \"Falló la tarea $JOB_NAME!!, ejecución $BUILD_NUMBER, \", \"disable_notification\": false}" https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
             }
         }
         stage('Paso 2: Ejecutar script de python') {
@@ -19,7 +20,8 @@ pipeline {
         }
         stage('Paso 3: Script al servidor') {
             steps {
-                echo 'Mandando sh al servidor...'
+                echo 'Mandando el sh al servidor...'
+                sh 'scp'
             }
         }
         stage('Paso 4: Ejecutar script de bash') {
