@@ -16,11 +16,6 @@ pipeline {
                 echo 'Ejecutando script de python...'
             }
         }
-        stage('Paso 2: Ejecutar script de python') {
-            steps {
-                echo 'Ejecutando script de python...'
-            }
-        }
         stage('Paso 3: Script al servidor') {
             steps {
                 echo 'Mandando sh al servidor...'
