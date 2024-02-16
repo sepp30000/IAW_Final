@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo 'Mandando el sh al servidor...'
                 //sh 'cat /home/ubuntu/puto.pem'
-                //sh 'scp -i ~/puto.pem -p /home/ubuntu/workspace/A\ la\ primera/meta-script.sh  ubuntu@52.91.234.139:/home/ubuntu/meta-script.sh'
+                sh 'scp -i ~/puto.pem -p /home/ubuntu/workspace/A_la_primera/meta-script.sh  ubuntu@52.91.234.139:/home/ubuntu/meta-script.sh'
             }
         }
         stage('Paso 4: Ejecutar script de bash') {
