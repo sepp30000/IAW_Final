@@ -14,7 +14,7 @@ pipeline {
         stage('Paso 2: Ejecutar script de python') {
             steps {
                 echo 'Ejecutando script de python...'
-                sh ''
+                sh '/usr/bin/python3 python-diff-v2.py old.xlsx new.xlsx'
             }
         }
         stage('Paso 3: Script al servidor') {
