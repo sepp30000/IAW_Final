@@ -21,7 +21,8 @@ pipeline {
         stage('Paso 3: Script al servidor') {
             steps {
                 echo 'Mandando el sh al servidor...'
-                sh 'cat /home/ubuntu/puto.pem'
+                //sh 'cat /home/ubuntu/puto.pem'
+                sh 'scp -i ~/puto.pem -p meta-script.sh  ubuntu@52.91.234.139:/home/ubuntu/metascript.sh'
             }
         }
         stage('Paso 4: Ejecutar script de bash') {
