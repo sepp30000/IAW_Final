@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Clonar') {
             steps {
-                echo 'Clonando repositorio...'
+                sh '
+                echo 'Clonando repositorio...''
             }
         }
     }
