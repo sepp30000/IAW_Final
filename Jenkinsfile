@@ -5,6 +5,7 @@ pipeline {
     stage('Clonar') {
       steps{
         echo 'Clonando'
+        }
       }
   }
 }
