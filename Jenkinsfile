@@ -4,9 +4,9 @@ pipeline {
             label 'AWS_NODO'
         }
     }
-    environment {
-        git = credentials('token')
-    }
+    // environment {
+    //    git = credentials('token')
+    //}
     stages {
         stage('Paso 1: Clonar') {
             steps {
