@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo 'Mandando el sh al servidor...'
                 // Cambiar el script chorra por el meta-script
-                sh 'scp -i ~/puto.pem -p /home/ubuntu/workspace/A_la_primera/meta-script.sh  ubuntu@52.91.234.139:/home/ubuntu/meta-script.sh'
+                sh 'scp -i ~/puto.pem -p /home/ubuntu/workspace/A_la_primera/meta-script.sh  ubuntu@servjenkins.duckdns.org:/home/ubuntu/meta-script.sh'
                 //sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
             }
         }
