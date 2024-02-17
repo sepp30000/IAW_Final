@@ -41,6 +41,8 @@ info = open("info.md", 'x')
 info.write("# Resultado de la ejecución del script meta-script.sh \n")
 
 
+
+
 def nuevosContratos():
     aux_id_hoy=ws_hoy.cell(row=1,column=1).value
     fila_hoy_procesada = 1
@@ -72,7 +74,8 @@ def nuevosContratos():
             meta_script.write("# Contrato a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value +"\n")            
             meta_script.write("useradd -m -d \"/home/"+auxUser+"\" -s \"/bin/bash\" -u "+str(auxUID)+" -c \""+auxFull+", ,"+str(auxTel)+", ,"+auxMail+"\" \""+auxUser+"\"\n" )
             meta_script.write("echo \""+auxUser+":"+str(auxTel)+"\"| chpasswd \n")
-            info.write("Añadimos a: "" +ws_hoy.cell(row=fila_hoy_procesada,column=3).value+"\n")
+            info.write("Añadimos a: " + str(ws_hoy.cell(row=fila_hoy_procesada, column=3).value) + "\n")
+
         
         # Siguiente linea mecanismo 
         fila_hoy_procesada = fila_hoy_procesada + 1
@@ -88,7 +91,7 @@ def modificaciones():
         
         old_fila = 1
         old_id = ws_ayer.cell(row=old_fila,column=1).value
-       
+
         vCambiosUsuario = []
         
         while (old_id != None):
@@ -107,7 +110,7 @@ def modificaciones():
                     for campoCambiado in range(0, len(vCambiosUsuario)):
                         auxC = int(vCambiosUsuario[campoCambiado]) + 2
                         # print("  --->   " + vCampos[vCambiosUsuario[campoCambiado]] + " : " + ws_hoy.cell(row=fila_hoy_procesada, column=auxC).value)
-                        logs_script.write("\n El usuario: " + ws_hoy.cell(row=fila_hoy_procesada,column=2).value+ ha cambiado en: "\n" )
+                        info.write("\n El usuario: " + str(ws_hoy.cell(row=fila_hoy_procesada, column=2).value) + " ha cambiado en: \n")
                         meta_script.write("# Modifico a " + ws_hoy.cell(row=fila_hoy_procesada, column=3).value + "\n")
                         ccambio = vCampos[vCambiosUsuario[campoCambiado]]
                         print(ccambio)
@@ -131,6 +134,7 @@ def modificaciones():
         # Siguiente linea mecanismo 
         fila_hoy_procesada = fila_hoy_procesada + 1
         aux_id_hoy = ws_hoy.cell(row=fila_hoy_procesada,column=1).value
+
 
 
 def despidos():
