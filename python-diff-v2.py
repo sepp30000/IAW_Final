@@ -87,6 +87,7 @@ def modificaciones():
     fila_hoy_procesada = 1
 
     meta_script.write("\n# USUARIOS MODIFICADOS \n")
+    info.write("\n# USUARIOS MODIFICADOS \n")
     while (aux_id_hoy != None):
         
         old_fila = 1
@@ -183,7 +184,6 @@ meta_script.write("exit 0\n")
 meta_script.close()
 
 sys.exit(0)
-
 
 
 
