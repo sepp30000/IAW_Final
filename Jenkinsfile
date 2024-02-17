@@ -45,16 +45,23 @@ pipeline {
                 sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "PDF!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
             }
         }
-        stage('Paso 6: Push a github') {
+        stage('Paso 6: Enviando PDF') {
             steps {
-                echo 'Haciendo un push a github...'
-                //sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
+                echo 'Enviando...'
+                sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "Enviado!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
+                sh 'curl -X  POST "https://api.telegram.org/bot"6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ"/sendDocument" -F chat_id="881875692" -F document="@info.pdf"'
             }
         }
-        stage('Paso 7: Notificando') {
+        stage('Paso 7: Push a github') {
+            steps {
+                echo 'Haciendo un push a github...'
+                // sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
+            }
+        }
+        stage('Paso 8: Notificando') {
             steps {
                 echo 'Notificando...'
-                //sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
+                sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "Terminado!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
             }
         }
     }
