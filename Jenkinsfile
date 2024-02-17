@@ -4,7 +4,9 @@ pipeline {
             label 'AWS_NODO'
         }
     }
-
+    environment {
+        git = credentials('token')
+    }
     stages {
         stage('Paso 1: Clonar') {
             steps {
@@ -55,7 +57,13 @@ pipeline {
         stage('Paso 7: Push a github') {
             steps {
                 echo 'Haciendo un push a github...'
-                // sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
+                sh 'git config --global user.email \'peris30000@gmail.com\''
+                    sh 'git config --global user.name \'Lauty04\''
+                    sh 'git add info.md info.pdf'
+                    sh 'git commit -m "Arriba"'
+                    withCredentials([usernamePassword(credentialsId: 'tokengit', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/sepp30000/IAW_Final.git HEAD:main')
+                sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "Github!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
             }
         }
         stage('Paso 8: Notificando') {
