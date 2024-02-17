@@ -65,7 +65,7 @@ pipeline {
         //                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/sepp30000/IAW_Final.git HEAD:main')
         //        sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "Github!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
         //    }
-        }
+        //}
         stage('Paso 8: Notificando') {
             steps {
                 echo 'Notificando...'
