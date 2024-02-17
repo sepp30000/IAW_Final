@@ -74,30 +74,28 @@ pipeline {
         }
     }
 post {
-        success {
-            steps {
-                script {
-                    // Imprimir variables de entorno
-                    echo "Variable de entorno proporcionada por Jenkins:"
-                    echo "JOB_NAME: ${env.JOB_NAME}"
-                    echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
-                    echo "BUILD_ID: ${env.BUILD_ID}"
-                    echo "BUILD_URL: ${env.BUILD_URL}"
-                    echo "JOB_URL: ${env.JOB_URL}"
-                    
-                    // Obtener el contenido del log
-                    def logContent = sh(script: "cat ${env.JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${env.BUILD_NUMBER}/log", returnStdout: true).trim()
-                    echo "Contenido completo del log del trabajo:"
-                    echo "${logContent}"
-                    
-                    // Exportar el contenido del log como una variable de entorno
-                    env.LOG_CONTENT = logContent
-                }
-            }
-                //sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "Funciona ${JOB_NAME}!! $LOG", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
-        failure {
-                //sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "Error Castastrófico $JOB_NAME!! $BUILD_NUMBER ", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
+    success {
+        script {
+            // Imprimir variables de entorno
+            echo "Variable de entorno proporcionada por Jenkins:"
+            echo "JOB_NAME: ${env.JOB_NAME}"
+            echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
+            echo "BUILD_ID: ${env.BUILD_ID}"
+            echo "BUILD_URL: ${env.BUILD_URL}"
+            echo "JOB_URL: ${env.JOB_URL}"
+            
+            // Obtener el contenido del log
+            
         }
-    }   
+    }
+    failure {
+        def logContent = sh(script: "cat ${env.JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${env.BUILD_NUMBER}/log", returnStdout: true).trim()
+            echo "Contenido completo del log del trabajo:"
+            echo "${logContent}"
+            
+            // Exportar el contenido del log como una variable de entorno
+            env.LOG_CONTENT = logContent
+    }
 }
+
 }
