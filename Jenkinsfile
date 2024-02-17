@@ -87,13 +87,7 @@ post {
     }
     failure {
         script {
-            // Obtener el contenido del log
-            def logContent = sh(script: "cat ${env.JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${env.BUILD_NUMBER}/log", returnStdout: true).trim()
-            echo "Contenido completo del log del trabajo:"
-            echo "${logContent}"
-            
-            // Exportar el contenido del log como una variable de entorno
-            env.LOG_CONTENT = logContent
+            cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log.txt
         }
     }
 }
