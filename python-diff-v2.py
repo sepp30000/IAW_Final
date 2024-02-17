@@ -161,7 +161,7 @@ def despidos():
         
         if despido :
             print(" * Despide a "+ws_ayer.cell(row=fila_ayer_procesada,column=3).value )
-            info.write(ws_ayer.cell(row=fila_ayer_procesada,column=3).value+" ha sido despedido."*"\n")
+            info.write(ws_ayer.cell(row=fila_ayer_procesada,column=3).value+" ha sido despedido."+"\n")
             
             meta_script.write("# Deleting "+ws_ayer.cell(row=fila_ayer_procesada,column=3).value+"\n")
             meta_script.write("deluser "+ws_ayer.cell(row=fila_ayer_procesada,column=2).value+"\n")
