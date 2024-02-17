@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo 'Ejecutando script de bash...'
                 // ssh para ejecutar
-                sh 'ssh -i ~/puto.pem ubuntu@52.91.234.139 "touch hola"'
+                sh 'ssh -i ~/puto.pem ubuntu@servjenkins.duckdns.org "touch hola"'
                 //sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
             }
         }
