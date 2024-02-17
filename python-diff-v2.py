@@ -107,6 +107,7 @@ def modificaciones():
                     for campoCambiado in range(0, len(vCambiosUsuario)):
                         auxC = int(vCambiosUsuario[campoCambiado]) + 2
                         # print("  --->   " + vCampos[vCambiosUsuario[campoCambiado]] + " : " + ws_hoy.cell(row=fila_hoy_procesada, column=auxC).value)
+                        logs_script.write("\n El usuario: " + ws_hoy.cell(row=fila_hoy_procesada,column=2).value+ ha cambiado en: "\n" )
                         meta_script.write("# Modifico a " + ws_hoy.cell(row=fila_hoy_procesada, column=3).value + "\n")
                         ccambio = vCampos[vCambiosUsuario[campoCambiado]]
                         print(ccambio)
