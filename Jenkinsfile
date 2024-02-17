@@ -58,7 +58,7 @@ pipeline {
             steps {
                 echo 'Haciendo un push a github...'
                 sh 'git config --global user.email \'peris30000@gmail.com\''
-                    sh 'git config --global user.name \'Lauty04\''
+                    sh 'git config --global user.name \'sepp30000\''
                     sh 'git add info.md info.pdf'
                     sh 'git commit -m "Arriba"'
                     withCredentials([usernamePassword(credentialsId: 'tokengit', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
