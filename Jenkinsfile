@@ -4,9 +4,9 @@ pipeline {
             label 'AWS_NODO'
         }
     }
-    // environment {
-    //    git = credentials('token')
-    //}
+    environment {
+        git = credentials('token')
+    }
     stages {
         stage('Paso 1: Clonar') {
             steps {
@@ -81,5 +81,4 @@ post {
                 sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "5419757145", "text": "Error Castastrófico $JOB_NAME!! $BUILD_NUMBER ", "disable_notification": false}\'  https://api.telegram.org/bot6421695221:AAFvC_xdV-RTxlAuH0_Fdahu0TMLXFHkWgU/sendMessage'
         }
     }
-}
     
