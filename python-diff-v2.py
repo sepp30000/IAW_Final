@@ -107,11 +107,12 @@ def modificaciones():
                 if hayCambios:
                     print(ws_hoy.cell(row=fila_hoy_procesada, column=2).value + " ha cambiado : ")
                     print(vCambiosUsuario)
+                    info.write("\n El usuario: " + str(ws_hoy.cell(row=fila_hoy_procesada, column=2).value) + " ha cambiado en: \n")
                     for campoCambiado in range(0, len(vCambiosUsuario)):
                         auxC = int(vCambiosUsuario[campoCambiado]) + 2
                         # print("  --->   " + vCampos[vCambiosUsuario[campoCambiado]] + " : " + ws_hoy.cell(row=fila_hoy_procesada, column=auxC).value)
-                        info.write("\n El usuario: " + str(ws_hoy.cell(row=fila_hoy_procesada, column=2).value) + " ha cambiado en: \n")
                         meta_script.write("# Modifico a " + ws_hoy.cell(row=fila_hoy_procesada, column=3).value + "\n")
+                        info.write("     " + vCampos[vCambiosUsuario[campoCambiado]] + " = " + str(ws_hoy.cell(row=fila_hoy_procesada, column=auxC).value)+"\n")
                         ccambio = vCampos[vCambiosUsuario[campoCambiado]]
                         print(ccambio)
                         if ccambio == vCampos[1]:
@@ -140,6 +141,7 @@ def modificaciones():
 def despidos():
 
     meta_script.write("\n\n# DESPIDOS PROCEDENTES :  \n\n")
+    info.write("\n\n# DESPIDOS PROCEDENTES :  \n\n")
 
     aux_id_ayer=ws_ayer.cell(row=1,column=1).value
     fila_ayer_procesada = 1
@@ -159,6 +161,7 @@ def despidos():
         
         if despido :
             print(" * Despide a "+ws_ayer.cell(row=fila_ayer_procesada,column=3).value )
+            info.write(ws_ayer.cell(row=fila_ayer_procesada,column=3).value+" ha sido despedido."*"\n")
             
             meta_script.write("# Deleting "+ws_ayer.cell(row=fila_ayer_procesada,column=3).value+"\n")
             meta_script.write("deluser "+ws_ayer.cell(row=fila_ayer_procesada,column=2).value+"\n")
