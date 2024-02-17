@@ -41,7 +41,7 @@ pipeline {
         stage('Paso 5: Creación de informe') {
             steps {
                 echo 'Conformando PDF...'
-                sh '/usr/bin/python3 python-diff-v2.py info.md info.pdf'
+                sh '/usr/bin/python3 md2pdf.py info.md info.pdf'
                 sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "PDF!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
             }
         }
