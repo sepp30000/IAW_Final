@@ -27,7 +27,7 @@ pipeline {
                 echo 'Mandando el sh al servidor...'
                 // Cambiar el script chorra por el meta-script
                 sh 'scp -i ~/puto.pem -p /home/ubuntu/workspace/A_la_primera/meta-script.sh  ubuntu@servjenkins.duckdns.org:/home/ubuntu/meta-script.sh'
-                //sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
+                sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "Mandado!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
             }
         }
         stage('Paso 4: Ejecutar script de bash') {
@@ -35,7 +35,7 @@ pipeline {
                 echo 'Ejecutando script de bash...'
                 // ssh para ejecutar
                 sh 'ssh -i ~/puto.pem ubuntu@servjenkins.duckdns.org "touch hola"'
-                //sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
+                sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "Ejecutado!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
             }
         }
         stage('Paso 5: Creación de informe') {
