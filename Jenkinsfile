@@ -69,7 +69,7 @@ pipeline {
         stage('Paso 8: Notificando') {
             steps {
                 echo 'Notificando...'
-                sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "Terminado!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
+                h 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "881875692", "text": "Terminado!!!", "disable_notification": false}\'  https://api.telegram.org/bot6791917046:AAHuW0hZOl5D5raRyx1R11MWY7fIYHi66xQ/sendMessage'
             }
         }
     }
