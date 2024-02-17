@@ -83,19 +83,20 @@ post {
             echo "BUILD_ID: ${env.BUILD_ID}"
             echo "BUILD_URL: ${env.BUILD_URL}"
             echo "JOB_URL: ${env.JOB_URL}"
-            
-            // Obtener el contenido del log
-            
         }
     }
     failure {
-        def logContent = sh(script: "cat ${env.JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${env.BUILD_NUMBER}/log", returnStdout: true).trim()
+        script {
+            // Obtener el contenido del log
+            def logContent = sh(script: "cat ${env.JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${env.BUILD_NUMBER}/log", returnStdout: true).trim()
             echo "Contenido completo del log del trabajo:"
             echo "${logContent}"
             
             // Exportar el contenido del log como una variable de entorno
             env.LOG_CONTENT = logContent
+        }
     }
 }
+
 
 }
