@@ -2,6 +2,9 @@ import argparse
 import markdown2
 from weasyprint import HTML
 
+if os.path.exists("info.pdf"):
+    os.remove("info.pdf")
+
 def markdown_to_pdf(input_file, output_file):
     # Leer el archivo markdown
     with open(input_file, 'r', encoding='utf-8') as f:
