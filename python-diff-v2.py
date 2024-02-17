@@ -31,11 +31,22 @@ meta_script.write("# IT WILL BE AUTOMAGICALLY GENERATED\n\n")
 meta_script.write("# Orig "+ruta_ayer+"\n")
 meta_script.write("# Dest "+ruta_hoy+"\n")
 
+# ELiminamos y creamos el md
+if os.path.exists("info.md"):
+    os.remove("info.md")
+    print(" * Create info.md")
+
+
+info = open("info.md", 'x')
+info.write("# Resultado de la ejecución del script meta-script.sh \n")
+
+
 def nuevosContratos():
     aux_id_hoy=ws_hoy.cell(row=1,column=1).value
     fila_hoy_procesada = 1
     
     meta_script.write("\n# NUEVOS CONTRATOS \n")
+    info.write("\n# NUEVOS CONTRATOS \n")
 
     while (aux_id_hoy != None):
         
@@ -61,7 +72,7 @@ def nuevosContratos():
             meta_script.write("# Contrato a "+ws_hoy.cell(row=fila_hoy_procesada,column=3).value +"\n")            
             meta_script.write("useradd -m -d \"/home/"+auxUser+"\" -s \"/bin/bash\" -u "+str(auxUID)+" -c \""+auxFull+", ,"+str(auxTel)+", ,"+auxMail+"\" \""+auxUser+"\"\n" )
             meta_script.write("echo \""+auxUser+":"+str(auxTel)+"\"| chpasswd \n")
-            
+            info.write("Añadimos a: "" +ws_hoy.cell(row=fila_hoy_procesada,column=3).value+"\n")
         
         # Siguiente linea mecanismo 
         fila_hoy_procesada = fila_hoy_procesada + 1
